@@ -4,7 +4,9 @@ import time
 from geopy.geocoders import Nominatim
 
 # Ask for authorization for info with API key
-API_KEY = 'AIzaSyDYMwRSfChNGRiFY90ygxLzhiigkfBuhIo'
+API_KEY = ''
+file=open("googlekey.txt","r")
+API_KEY=file.read()
 gmaps = googlemaps.Client(key = API_KEY)
 
 geolocator = Nominatim(user_agent="googleapi")
@@ -54,7 +56,7 @@ def top_five(location, place,size=5): #should pass location and food, default pa
 
     return results
 
-
+file.close()
 
 # user_input=input("Input the location(can be a zip code or a place like central park): ")
 # food_choice,size=input("Input resturant or type of food and number of choices to appear separated by a space: ").split()
