@@ -1,7 +1,7 @@
-# rambot
-#A multipurpose telegram bot
+## rambot
+A multipurpose telegram bot
 
-#This bot can send to you or your group: 
+# This bot can send to you or your group: 
 - memes
 - maymays
 - random dog pics and gifs
