@@ -16,7 +16,7 @@ TOKEN = file.read()
 PORT = int(os.environ.get('PORT', 5000))
 
 file.close()
-
+app = Flask(__name__)
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
 					level=logging.INFO)
 
@@ -87,6 +87,7 @@ def error(update, context):
 	"""Log Errors caused by Updates."""
 	logger.warning('Update "%s" caused error "%s"', update, context.error)
 
+@app.route('/')
 def main():
 	"""Start the bot."""
 	# Create the Updater and pass it your bot's token.
@@ -135,3 +136,4 @@ def main():
 
 if __name__ == '__main__':
 	main()
+	app.run()
