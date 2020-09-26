@@ -1,6 +1,7 @@
 
 from telegram.ext import Updater, InlineQueryHandler, CommandHandler, MessageHandler, Filters
 # from telebot.credentials import bot_token, bot_user_name,URL
+from flask import Flask
 import requests
 import re
 import googleapi
@@ -13,6 +14,8 @@ file=open("token.txt","r")
 TOKEN = file.read()
 
 file.close()
+app = Flask(__name__)
+
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
 					level=logging.INFO)
 
@@ -83,7 +86,7 @@ def error(update, context):
 	"""Log Errors caused by Updates."""
 	logger.warning('Update "%s" caused error "%s"', update, context.error)
 
-
+@app.route('/')
 def main():
 	"""Start the bot."""
 	# Create the Updater and pass it your bot's token.
@@ -131,3 +134,4 @@ def main():
 
 if __name__ == '__main__':
 	main()
+	app.run()
