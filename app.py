@@ -9,13 +9,15 @@ import logging
 import random
 import secrets
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 PORT = int(os.environ.get('PORT', 5000))
-TOKEN = ""
-file=open("token.txt","r")
-TOKEN = file.read()
+TOKEN = os.environ.get("token")
+# file=open("token.txt","r")
+# TOKEN = file.read()
 
-file.close()
+# file.close()
 app = Flask(__name__)
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
 					level=logging.INFO)
