@@ -29,23 +29,23 @@ text = ["Что","You know what? Im just going to fucking kill myself. Thats wha
 def start(update, context):
 	"""Send a message when the command /start is issued."""
 	update.message.reply_text("Feeling like an indecisive couch potato? Worry not and use Botato to help you make a decision! Write /help for more info.\n")
-	update.message.reply_text("Commands: \n/help --> how to use food bot.\n/diar --> roasts diar.\n/chuck -->returns Chuck Norris joke.\n/dog --> sends a random dog pic or gif.\n/meme --> sends the dankest memes.\n/maymay or /meemee --> finest collection of boomer hoomer.\n/cat --> praise the almighty inventor and get rewarded for it!\nThank.")
+	update.message.reply_text("Commands: \n/help --> how to use food bot.\n/diar --> roasts diar.\n/chuck --> returns Chuck Norris joke.\n/dog --> sends a random dog pic or gif.\n/meme --> sends the dankest memes.\n/maymay or /meemee --> finest collection of boomer hoomer.\n/cat --> praise the almighty inventor and get rewarded for it!\nThank.")
 
 
 def help(update, context):
 	"""Send a message when the command /help is issued."""
-	update.message.reply_text('Enter in thise order separated by a comma and space: Zip code or location. Resturant or food type. Number of choices.\nIf you dont want to specify something just put a zero there and it will default to the nearest 5 food places')
-	update.message.reply_text('Example1: /food Central park, pizza, 4\nExample2: /food CCNY, 0, 0\nExample3: /food CCNY, pizza, 0\nExample4: /food CCNY, 0, 10')
+	update.message.reply_text('Enter in thise order separated by a comma and space: Zip code or location. Resturant or food type. Number of choices.\nIf you dont want to specify a food type just put a blank space there or a 0 and it will default to just food places.\n')
+	update.message.reply_text('Example1: /food Central park, thai, 4 --> would give 4 nearest thai places by Central park\nExample2: /food CCNY --> would give 5 general food places by CCNY\nExample3: /food CCNY, pizza --> would give 5 pizza places by CCNY\nExample4: /food CCNY, 0, 10 --> would give the nearest 10 food places by CCNY\nExample5: /food CCNY, , 10 --> would give the nearest 10 food places by CCNY')
 	update.message.reply_text("Enjoy!")
 
 def give_food(update,context):
 	place = context.args
-	place, food_choice, number = " ".join(place).split(", ") # for user to specify choices
-	if(food_choice == '0' or number == '0'): #temporary fix for default values
-		if(food_choice == '0'):
+	place, food_choice, number = (" ".join(place).split(", ")+[None]+[None])[:3] # for user to specify choices, does not account for if the user wants to put in a food
+	if(food_choice is None or food_choice == "" or food_choice == "0" or number is None): #temporary fix for default values
+		if(food_choice is None or food_choice == "" or food_choice == "0"):
 			food_choice = 'food'
-	if(number == '0'):
-		number = 5
+		if(number is None):
+			number = 5
 
 	update.message.reply_text("\nHere are {size} {food_choice} places near: {user_input}".format(size=number,food_choice=food_choice,user_input=place))
 	location = googleapi.get_location(str(place))
