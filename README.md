@@ -18,4 +18,7 @@ Deployed using Heroku, because of this, if the app has been inactive for longer 
 
 Try out the bot: https://t.me/give_me_food_bot
 
+![](demo.GIF)
+
+
 Enjoy!
