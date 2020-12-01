@@ -12,6 +12,10 @@ A multipurpose telegram bot
 
 Deployed using Heroku, because of this, if the app has been inactive for longer than 30 minutes it goes to sleep. Sending a command will wake it up and it will respond after some time.
 
+### Future plans:
+  - Add Covid resources, like nearest testing sites, or statistics around a certain zipcode or area.
+  - Mental health resources.
+
 Try out the bot: https://t.me/give_me_food_bot
 
 Enjoy!
