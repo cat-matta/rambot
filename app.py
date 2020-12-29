@@ -2,6 +2,7 @@
 from telegram.ext import Updater, InlineQueryHandler, CommandHandler, MessageHandler, Filters
 # from telebot.credentials import bot_token, bot_user_name,URL
 from flask import Flask
+from telegram import Update
 import requests
 import re
 import googleapi
